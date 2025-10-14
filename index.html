@@ -7,49 +7,97 @@
     <title>Lokesh Sample Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 2rem;
-            background: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
         form {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
+            background: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            width: 100%;
             max-width: 400px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
         }
 
         label {
             display: block;
             margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #555;
         }
 
         input,
         select {
             width: 100%;
-            padding: 0.5rem;
+            padding: 0.6rem 0.8rem;
             margin-top: 0.3rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
         }
 
         button {
-            margin-top: 1.5rem;
-            padding: 0.7rem 1.5rem;
+            margin-top: 1.8rem;
+            width: 100%;
+            padding: 0.8rem 1.2rem;
             background: #007bff;
             color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         button:hover {
             background: #0056b3;
+            transform: translateY(-2px);
         }
 
         #response {
             margin-top: 1rem;
-            font-weight: bold;
+            font-weight: 600;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            form {
+                padding: 2rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
