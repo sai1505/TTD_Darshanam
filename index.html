@@ -2,146 +2,125 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Darshanam Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokesh Sample Form</title>
     <style>
         body {
-            font-family: "Poppins", sans-serif;
-            background: #f5f7fa;
-            padding: 40px;
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
         }
 
         form {
             background: #fff;
-            padding: 25px 30px;
-            border-radius: 10px;
-            max-width: 450px;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 400px;
             margin: auto;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         label {
             display: block;
-            margin-top: 12px;
-            font-weight: 500;
-            color: #444;
+            margin-top: 1rem;
         }
 
         input,
         select {
             width: 100%;
-            padding: 8px;
-            margin-top: 6px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
+            padding: 0.5rem;
+            margin-top: 0.3rem;
         }
 
         button {
-            width: 100%;
-            margin-top: 20px;
-            padding: 10px;
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.5rem;
             background: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
 
         button:hover {
             background: #0056b3;
         }
 
-        .msg {
-            text-align: center;
-            margin-top: 15px;
+        #response {
+            margin-top: 1rem;
             font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <form id="darshanForm">
-        <h2>Darshanam Registration</h2>
 
-        <label for="year">Select Year:</label>
-        <select id="year" required>
-            <option value="">--Select Year--</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-            <option value="2027">2027</option>
-        </select>
+    <h2>Lokesh Sample Form</h2>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" required />
+    <form id="lokeshForm">
+        <label>Date:
+            <input type="date" id="date" name="date" required>
+        </label>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" required />
+        <label>Name:
+            <input type="text" id="name" name="name" required>
+        </label>
 
-        <label for="breakDarshanam">Break Darshanam:</label>
-        <select id="breakDarshanam" required>
-            <option value="">--Select--</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
+        <label>Break Darshanam:
+            <select id="break" name="breakDarshanam">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
 
-        <label for="supadhamDarshanam">Supadham Darshanam:</label>
-        <select id="supadhamDarshanam" required>
-            <option value="">--Select--</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
+        <label>Supadham Darshanam:
+            <select id="supadham" name="supadhamDarshanam">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
 
-        <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" pattern="[0-9]{10}" title="Enter 10 digit mobile number" required />
+        <label>Mobile Number:
+            <input type="tel" id="mobile" name="mobileNumber" required>
+        </label>
+
+        <label>Year:
+            <input type="number" id="year" name="year" value="" placeholder="Leave blank for current year">
+        </label>
 
         <button type="submit">Submit</button>
-        <div class="msg" id="msg"></div>
+        <div id="response"></div>
     </form>
 
     <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbw6ykpjsWxgbEAkejfaR9GiEppb3YV-6iKJgO8KR3p8Rv_u5bHBSuKpQfDCWlY1rvKY/exec"; // 🔗 Replace with your script URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycbx8kYNl169vr6q78RmZz5GOtXcMuMXovGvpEvfWVuefwIQa3MXCnXD2GkpTaJI41mLC/exec"; // Replace with your new /exec URL
 
-        document.getElementById("darshanForm").addEventListener("submit", async (e) => {
+        const form = document.getElementById('lokeshForm');
+        const responseDiv = document.getElementById('response');
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const msg = document.getElementById("msg");
-            msg.textContent = "Submitting...";
 
-            const formData = {
-                year: document.getElementById("year").value,
-                date: document.getElementById("date").value,
-                name: document.getElementById("name").value,
-                breakDarshanam: document.getElementById("breakDarshanam").value,
-                supadhamDarshanam: document.getElementById("supadhamDarshanam").value,
-                mobileNumber: document.getElementById("mobileNumber").value
-            };
+            const formData = new FormData(form);
 
             try {
-                const formBody = new FormData();
-                for (const key in formData) formBody.append(key, formData[key]);
-
                 const res = await fetch(scriptURL, {
-                    method: "POST",
-                    body: formBody
+                    method: 'POST',
+                    body: formData
                 });
 
                 const text = await res.text();
-                msg.textContent = text;
-                msg.style.color = "green";
-                document.getElementById("darshanForm").reset();
+                responseDiv.textContent = text;
+
+                // Optionally reset form
+                form.reset();
             } catch (err) {
-                msg.textContent = "❌ Submission failed!";
-                msg.style.color = "red";
+                responseDiv.textContent = "❌ Error submitting form: " + err.message;
             }
         });
     </script>
+
 </body>
 
 </html>
