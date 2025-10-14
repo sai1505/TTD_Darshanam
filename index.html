@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lokesh Sample Form</title>
+    <title>TTD Darshanam Data Collection</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -147,12 +147,16 @@
             <input type="tel" id="mobile" name="mobileNumber" required>
         </label>
 
+        <label>Referenced By:
+            <input type="text" id="reference" name="referencedBy" required>
+        </label>
+
         <button type="submit">Submit</button>
         <div id="response"></div>
     </form>
 
     <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbx8kYNl169vr6q78RmZz5GOtXcMuMXovGvpEvfWVuefwIQa3MXCnXD2GkpTaJI41mLC/exec"; // Replace with your new /exec URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzOZjbA1gZg0rQXyJXdzYh0ebYwf01GDIqWnYSjzyeudmjkgIBG4sH4qLxHQ8z8dKiV/exec"; // Replace with your new /exec URL
 
         const form = document.getElementById('lokeshForm');
         const responseDiv = document.getElementById('response');
