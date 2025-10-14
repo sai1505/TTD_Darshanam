@@ -124,11 +124,14 @@
             };
 
             try {
+                const formBody = new FormData();
+                for (const key in formData) formBody.append(key, formData[key]);
+
                 const res = await fetch(scriptURL, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData)
+                    body: formBody
                 });
+
                 const text = await res.text();
                 msg.textContent = text;
                 msg.style.color = "green";
