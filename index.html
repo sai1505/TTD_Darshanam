@@ -32,33 +32,34 @@
             width: 100%;
             max-width: 400px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            /* Stack all children vertically */
+            gap: 1rem;
+            /* Space between each input/label */
         }
 
-        form:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Input labels */
+        /* Labels */
         label {
-            display: block;
-            margin-top: 1.2rem;
             font-size: 0.95rem;
+            padding-bottom: 5px;
             color: #555;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            /* Place input below label */
         }
 
         /* Inputs and selects */
         input,
         select {
             width: 100%;
+            margin-top: 8px;
             padding: 0.8rem 1rem;
-            margin-top: 0.3rem;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 0.95rem;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
         }
 
         input:focus,
@@ -70,7 +71,6 @@
 
         /* Submit button */
         button {
-            margin-top: 2rem;
             width: 100%;
             padding: 0.9rem 1.2rem;
             background: #007bff;
@@ -81,6 +81,8 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: 1rem;
+            /* space above button */
         }
 
         button:hover {
@@ -94,17 +96,6 @@
             font-weight: 600;
             text-align: center;
             color: #333;
-        }
-
-        /* Floating label effect (optional Material-style) */
-        input:focus+label,
-        input:not(:placeholder-shown)+label,
-        select:focus+label,
-        select:not([value=""])+label {
-            transform: translateY(-1.6rem);
-            font-size: 0.8rem;
-            color: #007bff;
-            transition: all 0.2s ease-out;
         }
 
         /* Responsive adjustments */
